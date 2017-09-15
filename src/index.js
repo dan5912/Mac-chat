@@ -90,12 +90,12 @@ io.on('connection', function(client) {
     userAvatarColor: userAvatarColor
   });
     //Save it to database
-    /*newMessage.save(function(err, msg){
+    newMessage.save(function(err, msg){
       //Send message to those connected in the room
       console.log('new message sent');
 
-      //io.emit("messageCreated",  msg.messageBody, msg.userId, msg.channelId, msg.userName, msg.userAvatar, msg.userAvatarColor, msg.id, msg.timeStamp);
-    });*/
+      io.emit("messageCreated",  msg.messageBody, msg.userId, msg.channelId, msg.userName, msg.userAvatar, msg.userAvatarColor, msg.id, msg.timeStamp);
+    });
   });
 });
 /*||||||||||||||||||||END SOCKETS||||||||||||||||||*/
