@@ -18,7 +18,7 @@ export default({ config, db }) => {
     newMessage.userAvatar = req.body.userAvatar;
     newMessage.userAvatarColor = req.body.userAvatarColor;
 
-    newMessage.save(err => {
+    newMessage.insert(err => {
       if (err) {
         res.status(500).json({ message: err });
       }
