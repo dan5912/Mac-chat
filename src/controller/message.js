@@ -27,12 +27,13 @@ export default({ config, db }) => {
   });
 
   // '/v1/message/:id' - Update
-  api.get('/:id', authenticate, (req, res) => {
-    Message.find({'messageBody': req.params.id}, (err, message) => {
+  api.get('/:body', authenticate, (req, res) => {
+    Message.find({ 'messageBody' : req.params.body }, (err, message) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      res.status(200).json({ID_TS: message._id.getTimestamp(), TS : message.timeStamp, BODY: message.messageBody});
+      //res.status(200).json({ID_TS: message._id.getTimestamp(), TS : message.timeStamp, BODY: message.messageBody});
+      res.status(200).json(message)
     });
   });
   
