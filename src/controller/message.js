@@ -38,7 +38,7 @@ export default({ config, db }) => {
   });
   
 
-  // '/v1/message/byChannel/:channelId'.  .sort('timeStamp')
+  // '/v1/message/byChannel/:channelId'.  .sort('timeStamp') .sort('_id')
   api.get('/byChannel/:channelId', authenticate, (req, res) => {
     Message.find( { 'channelId' : req.params.channelId } ).exec((err, messages) => {
         if(err) {
