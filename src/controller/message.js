@@ -68,7 +68,7 @@ function(err,allNews){
 })*/
 
   // '/vq/message/:id' -Delete
-  api.delete('/:id', authenticate, (req, res) => {
+  api.delete('/del/:id', authenticate, (req, res) => {
     Message.remove({
       _id: req.params.id
     }, (err, message) => {
