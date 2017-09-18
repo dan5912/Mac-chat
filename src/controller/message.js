@@ -56,6 +56,7 @@ export default({ config, db }) => {
         }
         res.status(200).json(messages);
       });
+    });
       
       /*.find({ 'channelId' : req.params.channelId }, (err, messages) => {
         if(err) {
