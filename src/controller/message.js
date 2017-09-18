@@ -28,7 +28,7 @@ export default({ config, db }) => {
 
   // '/v1/message/:id' - Update
   api.get('/:id', authenticate, (req, res) => {
-    Message.findById(req.params.id, (err, user) => {
+    Message.findById(req.params.id, (err, message) => {
       if (err) {
         res.status(500).json({ message: err });
       }
