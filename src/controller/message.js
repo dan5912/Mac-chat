@@ -32,7 +32,8 @@ export default({ config, db }) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      message.messageBody = req.body.messageBody;
+      res.status(200).json({ message: message._id.getTimestamp() });
+      /*message.messageBody = req.body.messageBody;
       message.userId = req.body.userId;
       message.channelId = req.body.channelId;
       newMessage.userName = req.body.userName;
@@ -43,7 +44,7 @@ export default({ config, db }) => {
         if (err) {
           res.status(500).json({ message: err });
         }
-        res.status(200).json({ message: message._id.getTimestamp() });
+        res.status(200).json({ message: message._id.getTimestamp() });*/
       });
     });
   });
