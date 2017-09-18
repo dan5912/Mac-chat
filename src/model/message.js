@@ -4,10 +4,8 @@ import Channel from './channel';
 
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
-var ObjectID = require('mongodb').ObjectID
 
 const messageSchema = new Schema({
-  _id: new ObjectID(),
   messageBody: String, default: "",
   timeStamp: {type: Date, default: Date.now},
   userId: {type: ObjectId, ref: 'User'},
