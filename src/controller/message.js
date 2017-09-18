@@ -32,7 +32,7 @@ export default({ config, db }) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      res.status(200).json(message._id);
+      res.status(200).json(message._id.getTimestamp());
     });
   });
   
