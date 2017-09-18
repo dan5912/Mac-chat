@@ -27,27 +27,17 @@ export default({ config, db }) => {
   });
 
   // '/v1/message/:id' - Update
-  api.put('/message/:id', authenticate, (req, res) => {
-    Message.findById(req.params.id, (err, message) => {
+  api.get('/:id', authenticate, (req, res) => {
+    Message.find({
+      _id: req.params.id
+    }, (err, message) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      res.status(200).json({ message: message._id.getTimestamp() });
-      /*message.messageBody = req.body.messageBody;
-      message.userId = req.body.userId;
-      message.channelId = req.body.channelId;
-      newMessage.userName = req.body.userName;
-      newMessage.userAvatar = req.body.userAvatar;
-      newMessage.userAvatarColor = req.body.userAvatarColor;
-
-      message.save(err => {
-        if (err) {
-          res.status(500).json({ message: err });
-        }
-        res.status(200).json({ message: message._id.getTimestamp() });
-      });*/
+      res.status(200).json({ message: 'Message Successfully Removed'});
     });
   });
+  
 
   // '/v1/message/byChannel/:channelId'
   api.get('/byChannel/:channelId', authenticate, (req, res) => {
