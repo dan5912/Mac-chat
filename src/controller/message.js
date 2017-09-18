@@ -50,7 +50,7 @@ export default({ config, db }) => {
 
   // '/v1/message/byChannel/:channelId'
   api.get('/byChannel/:channelId', authenticate, (req, res) => {
-    Message.find( { 'channelId' : req.params.channelId } ).sort('-date').exec((err, messages) => {
+    Message.find( { 'channelId' : req.params.channelId } ).sort('-timeStamp').exec((err, messages) => {
         if(err) {
           res.status(500).json({ message: err });
         }
