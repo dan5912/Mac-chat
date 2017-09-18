@@ -28,13 +28,11 @@ export default({ config, db }) => {
 
   // '/v1/message/:id' - Update
   api.get('/:id', authenticate, (req, res) => {
-    Message.find({
-      _id: req.params.id
-    }, (err, message) => {
+    Message.findById(req.params.id, (err, user) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      res.status(200).json({ message: 'test', message2: 'test2'}, message);
+      res.status(200).json(message);
     });
   });
   
