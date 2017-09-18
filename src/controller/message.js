@@ -50,14 +50,36 @@ export default({ config, db }) => {
 
   // '/v1/message/byChannel/:channelId'
   api.get('/byChannel/:channelId', authenticate, (req, res) => {
-    Message
-      .find({ 'channelId' : req.params.channelId }, (err, messages) => {
+    Message.find(
+    { 'channelId' : req.params.channelId },
+      {
+        sort:{
+            "timeStamp": -1 //Sort by Date Added DESC
+        }
+      },(err, messages) => {
+        if(err) {
+          res.status(500).json({ message: err });
+        }
+        res.status(200).json(messages);
+      });
+    });
+      /*.find({ 'channelId' : req.params.channelId }, (err, messages) => {
         if(err) {
           res.status(500).json({ message: err });
         }
         res.status(200).json(messages);
       });
   });
+  .find(
+    { 'channelId' : req.params.channelId },
+{
+    sort:{
+        "timeStamp": -1 //Sort by Date Added DESC
+    }
+},
+function(err,allNews){
+    socket.emit('news-load', allNews); // Do something with the array of 10 objects
+})*/
 
   // '/vq/message/:id' -Delete
   api.delete('/:id', authenticate, (req, res) => {
