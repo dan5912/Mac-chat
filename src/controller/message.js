@@ -32,15 +32,15 @@ export default({ config, db }) => {
       if (err) {
         res.status(500).json({ message: err });
       }
-      //res.status(200).json({ID_TS: message._id.getTimestamp(), TS : message.timeStamp, BODY: message.messageBody});
-      res.status(200).json(message)
+      res.status(200).json({ID_TS: message._id.getTimestamp(), TS : message.timeStamp, BODY: message.messageBody});
+      //res.status(200).json(message)
     });
   });
   
 
-  // '/v1/message/byChannel/:channelId'
+  // '/v1/message/byChannel/:channelId'.  .sort('timeStamp')
   api.get('/byChannel/:channelId', authenticate, (req, res) => {
-    Message.find( { 'channelId' : req.params.channelId } ).sort('timeStamp').exec((err, messages) => {
+    Message.find( { 'channelId' : req.params.channelId } ).exec((err, messages) => {
         if(err) {
           res.status(500).json({ message: err });
         }
