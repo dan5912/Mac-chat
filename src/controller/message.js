@@ -44,8 +44,8 @@ export default({ config, db }) => {
         if (err) {
           res.status(500).json({ message: err });
         }
-        res.status(200).json({ message: message._id.getTimestamp() });*/
-      });
+        res.status(200).json({ message: message._id.getTimestamp() });
+      });*/
     });
   });
 
